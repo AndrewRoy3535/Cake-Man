@@ -7,8 +7,9 @@ import { NavLink, Link } from "react-router-dom";
 import { SocialIcon } from "react-social-icons";
 import { Transition } from "@headlessui/react";
 import Button from "../../component/Button/Button";
+import { removeItem } from "../../redux/cartReducer/cartActions";
 
-function Navbar({ cartItems }) {
+function Navbar({ cartItems, removeItem }) {
   const [isOpen, setIsOpen] = useState(false);
   const [openCart, setOpenCart] = useState(false);
 
@@ -196,27 +197,30 @@ function Navbar({ cartItems }) {
           leaveTo='opacity-0 scale-95'>
           {(ref) => (
             <div
-              className='absolute bg-gray-500 mt-1 rounded-xl border-white  w-full  md:w-1/3 md:right-0'
+              className='absolute bg-gray-900 mt-1 rounded-xl border-white  w-full  md:w-1/3 md:right-0 py-1'
               id='mobile-menu'>
               {cartItems.map((item) => (
                 <div
                   // ref={ref}
-                  className='sm:px-3 text-center'>
+                  className='px-2 text-center'
+                  key={item.id}>
                   <div className='bg-gray-200 rounded'>
-                    <div className='flex items-center justify-between mt-2 mb-2'>
+                    <div className='flex items-center justify-between mt-1 mb-1'>
                       <img
-                        className='md:h-10 md:w-10 h-12 w-12 rounded-full ml-5'
+                        className='h-12 w-12 rounded-full ml-5'
                         src={item.productImages[0]}
                         alt='cartimages'
                       />
-                      <div className='w-2/4 items-start flex'>
-                        <span className='md:text-md text-md'>{item.title}</span>
+                      <div className='w-6/12 items-start flex '>
+                        <span className='text-md truncate'>{item.title}</span>
                       </div>
-                      <div className='1/4'>
-                        <span className='md:text-md text-md'>{item.price}</span>
+                      <div className='2/12'>
+                        <span className='text-md'>{item.price}</span>
                       </div>
-                      <div className='w-1/4'>
-                        <button className='text-md p-1 mr-5'>
+                      <div className='w-2/12'>
+                        <button
+                          className='text-md p-1 mr-5'
+                          onClick={() => removeItem(item)}>
                           <span className='text-md md:text-3xl'>&#215;</span>
                         </button>
                       </div>
@@ -224,6 +228,9 @@ function Navbar({ cartItems }) {
                   </div>
                 </div>
               ))}
+              <div className='w-full py-5 flex justify-center'>
+                <Button>Checkout</Button>
+              </div>
             </div>
           )}
         </Transition>
@@ -236,4 +243,8 @@ const mapStateToProps = createStructuredSelector({
   cartItems: selectCartItems,
 });
 
-export default connect(mapStateToProps)(Navbar);
+const mapDispatchToProps = (dispatch) => ({
+  removeItem: (cartItems) => dispatch(removeItem(cartItems)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar);
