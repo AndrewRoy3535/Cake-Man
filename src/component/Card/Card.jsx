@@ -14,7 +14,7 @@ function Card({ item, addItem }) {
             {title}
           </h4>
           <p className='text-sm'>
-            Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec
+            Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec{" "}
             ullamcorper nulla non metus auctor fringilla.
           </p>
           <div className='mt-1 flex'>

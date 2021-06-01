@@ -159,7 +159,7 @@ function Navbar({ cartItems, removeItem }) {
           leaveTo='opacity-0 scale-95'>
           {(ref) => (
             <div
-              className='md:hidden absolute bg-gray-500 w-full'
+              className='md:hidden absolute bg-gray-900 w-full'
               id='mobile-menu'>
               <div
                 // ref={ref}
@@ -212,7 +212,10 @@ function Navbar({ cartItems, removeItem }) {
                         alt='cartimages'
                       />
                       <div className='w-6/12 items-start flex '>
-                        <span className='text-md truncate'>{item.title}</span>
+                        <span className='text-md truncate mr-1'>
+                          {item.title}
+                        </span>
+                        x{item.quantity}
                       </div>
                       <div className='2/12'>
                         <span className='text-md'>{item.price}</span>
