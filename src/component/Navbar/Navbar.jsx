@@ -6,10 +6,12 @@ import { selectCartItems } from "../../redux/cartReducer/cartSelector";
 import { NavLink, Link } from "react-router-dom";
 import { SocialIcon } from "react-social-icons";
 import { Transition } from "@headlessui/react";
-import Button from "../../component/Button/Button";
 import { removeItem } from "../../redux/cartReducer/cartActions";
+import LoginBtn from "../LoginBtn/LoginBtn";
+import LogOutBtn from "../LogOutBtn/LogOutBtn";
+import { useAuth0 } from "@auth0/auth0-react";
 
-function Navbar({ cartItems, removeItem }) {
+function Navbar({ cartItems, removeItem, history, match }) {
   const [isOpen, setIsOpen] = useState(false);
   const [openCart, setOpenCart] = useState(false);
 
@@ -20,6 +22,9 @@ function Navbar({ cartItems, removeItem }) {
   const handleCartOpen = () => {
     setOpenCart(!openCart);
   };
+
+  const { isAuthenticated } = useAuth0();
+
   return (
     <div className='fixed inset-x-0 top-0 h-24 z-10'>
       <nav className='bg-black'>
@@ -145,6 +150,9 @@ function Navbar({ cartItems, removeItem }) {
                 style={{ height: 35, width: 35 }}
                 target='_blank'
               />
+              <div className='ml-2'>
+                {isAuthenticated ? <LogOutBtn /> : <LoginBtn />}
+              </div>
             </div>
           </div>
         </div>
@@ -232,7 +240,12 @@ function Navbar({ cartItems, removeItem }) {
                 </div>
               ))}
               <div className='w-full py-5 flex justify-center'>
-                <Button>Checkout</Button>
+                <Link
+                  className='bg-transparent hover:bg-yellow-300 text-yellow-300 hover:text-black rounded shadow hover:shadow-lg py-2 px-4 border border-yellow-300 hover:border-transparent cursor-pointer'
+                  to='/checkout'
+                  onClick={handleClick}>
+                  Checkout
+                </Link>
               </div>
             </div>
           )}

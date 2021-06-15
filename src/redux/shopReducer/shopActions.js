@@ -18,6 +18,7 @@ export const fetchDataInt = () => {
           slug,
           "productImages": defaultProductVariant.images[].asset->url,
           "price": defaultProductVariant.price,
+          "des": body.en[0].children[0].text,
         }`
       )
       .then((response) => dispatch(fetchData(response)))

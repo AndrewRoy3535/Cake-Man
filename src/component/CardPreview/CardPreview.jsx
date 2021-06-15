@@ -22,14 +22,14 @@ function CardPreview({ fetchData, loading, products }) {
     );
 
   return (
-    <>
+    <React.Fragment>
       <h1 className='w-full flex justify-center text-4xl mt-5'>OUR CAKES</h1>
       <div className='bg-white sm:flex sm:flex-col md:flex md:flex-row flex-wrap w-full  justify-center items-center'>
         {products.map((el) => (
           <Card key={el.id} item={el} />
         ))}
       </div>
-    </>
+    </React.Fragment>
   );
 }
 const mapStateToProps = (state) => ({

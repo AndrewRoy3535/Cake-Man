@@ -3,24 +3,25 @@ import { connect } from "react-redux";
 import { addItem } from "../../redux/cartReducer/cartActions";
 
 function Card({ item, addItem }) {
-  const { title, price, productImages } = item;
+  const { title, price, productImages, des } = item;
 
   return (
     <div className='p-5 transform hover:-translate-y-0.5 transition-transform duration-25 ease-in-out'>
       <div className='max-w-sm rounded-md overflow-hidden shadow-lg'>
-        <img className='w-full ' src={productImages[0]} alt='productsImage' />
+        <img
+          className='w-full h-96'
+          src={productImages[0]}
+          alt='productsImage'
+        />
         <div className='px-6 py-4'>
           <h4 className='mt-1 text-xl font-semibold uppercase leading-tight truncate'>
             {title}
           </h4>
-          <p className='text-sm'>
-            Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec{" "}
-            ullamcorper nulla non metus auctor fringilla.
-          </p>
+          <p className='text-sm truncate'>{des}</p>
           <div className='mt-1 flex'>
-            $ {price} X
+            $ {price} /per pound
             <div className='ml-1'>
-              <div className='flex'>
+              {/* <div className='flex'>
                 <button className='text-white text-center text-md font-semibold  px-3 bg-gray-800 focus:bg-gray-600 focus:outline-none border border-gray-800 focus:border-gray-600'>
                   -
                 </button>
@@ -31,7 +32,7 @@ function Card({ item, addItem }) {
                   +
                 </button>
                 <span className='text-gray-600 text-sm pl-1'>/pound</span>
-              </div>
+              </div> */}
             </div>
           </div>
           <div className='mt-4'>

@@ -13,6 +13,11 @@ const shopReducer = (state = INITIAL_STATE, action) => {
         loading: false,
         products: action.payload,
       };
+    case shoptypes.INCREMENT_PRICE:
+      return {
+        ...state,
+        products: action.payload,
+      };
     default:
       return state;
   }
