@@ -7,9 +7,9 @@ import { NavLink, Link } from "react-router-dom";
 import { SocialIcon } from "react-social-icons";
 import { Transition } from "@headlessui/react";
 import { removeItem } from "../../redux/cartReducer/cartActions";
-import LoginBtn from "../LoginBtn/LoginBtn";
-import LogOutBtn from "../LogOutBtn/LogOutBtn";
-import { useAuth0 } from "@auth0/auth0-react";
+// import LoginBtn from "../LoginBtn/LoginBtn";
+// import LogOutBtn from "../LogOutBtn/LogOutBtn";
+// import { useAuth0 } from "@auth0/auth0-react";
 
 function Navbar({ cartItems, removeItem, history, match }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -23,7 +23,7 @@ function Navbar({ cartItems, removeItem, history, match }) {
     setOpenCart(!openCart);
   };
 
-  const { isAuthenticated } = useAuth0();
+  // const { isAuthenticated } = useAuth0();
 
   return (
     <div className='fixed inset-x-0 top-0 h-24 z-10'>
@@ -53,16 +53,11 @@ function Navbar({ cartItems, removeItem, history, match }) {
                     className=' hover:bg-yellow-700 text-white px-3 py-2 rounded-md text-2xl indie font-medium'>
                     About
                   </NavLink>
-                  <NavLink
-                    to='/contact'
-                    className=' hover:bg-yellow-700 text-white px-3 py-2 rounded-md text-2xl indie font-medium'>
-                    Contact
-                  </NavLink>
                 </div>
               </div>
             </div>
             <div className='-mr-2 flex md:hidden'>
-              <button
+              {/* <button
                 onClick={handleCartOpen}
                 className='focus:outline-none focus:ring-t mr-2'
                 type='button'>
@@ -82,7 +77,7 @@ function Navbar({ cartItems, removeItem, history, match }) {
                   />
                 </svg>
                 <span className='sr-only'>cart option</span>
-              </button>
+              </button> */}
               <button
                 onClick={handleClick}
                 type='button'
@@ -127,7 +122,7 @@ function Navbar({ cartItems, removeItem, history, match }) {
             <div className='md:flex  justify-end hidden items-center'>
               <button
                 onClick={handleCartOpen}
-                className='focus:outline-none mr-5 p-2 focus:ring-t'
+                className='focus:outline-none mr-5 p-2 focus:ring-t hidden'
                 type='button'>
                 <svg
                   xmlns='http://www.w3.org/2000/svg'
@@ -144,15 +139,15 @@ function Navbar({ cartItems, removeItem, history, match }) {
                 </svg>
               </button>
               <SocialIcon
-                url='https://www.facebook.com'
+                url='https://www.facebook.com/cakeman365'
                 bgColor='#ffffff'
                 className='items-end justify-end'
                 style={{ height: 35, width: 35 }}
                 target='_blank'
               />
-              <div className='ml-2'>
+              {/* <div className='ml-2'>
                 {isAuthenticated ? <LogOutBtn /> : <LoginBtn />}
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
@@ -184,12 +179,6 @@ function Navbar({ cartItems, removeItem, history, match }) {
                   to='/about'
                   className='text-gray-300 hover:bg-yellow-700 hover:text-white block px-3 py-2 rounded-md text-2xl indie'>
                   About
-                </NavLink>
-                <NavLink
-                  onClick={handleClick}
-                  to='/contact'
-                  className='text-gray-300 hover:bg-yellow-700 hover:text-white block px-3 py-2 rounded-md text-2xl indie'>
-                  Contact
                 </NavLink>
               </div>
             </div>

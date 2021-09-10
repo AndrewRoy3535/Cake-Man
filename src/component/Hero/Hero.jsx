@@ -17,7 +17,7 @@ function Hero() {
             <p className='text-sm md:text-base text-gray-50 mb-4'>
               It is a long established fact that a reader will be distracted.
             </p>
-            <Button href={"https://www.google.com"}>Explore</Button>
+            <Button href={"https://m.me/cakeman365"}>Messenger</Button>
           </div>
           <div className='p-8 mt-12 mb-6 md:mb-0 md:mt-0 ml-0 md:ml-12 lg:w-2/3  justify-center'>
             <div className='h-48 flex flex-wrap content-center justify-center'>

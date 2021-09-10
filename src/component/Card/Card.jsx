@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { addItem } from "../../redux/cartReducer/cartActions";
+import { Link } from "react-router-dom";
 
 function Card({ item, addItem }) {
   const { title, price, productImages, des } = item;
@@ -17,7 +18,7 @@ function Card({ item, addItem }) {
           <h4 className='mt-1 text-xl font-semibold uppercase leading-tight truncate'>
             {title}
           </h4>
-          <p className='text-sm truncate'>{des}</p>
+          <p className='text-sm line-clamp-3'>{des}</p>
           <div className='mt-1 flex'>
             $ {price} /per pound
             <div className='ml-1'>
@@ -39,14 +40,21 @@ function Card({ item, addItem }) {
             <span className='text-teal-600 text-md font-semibold'>
               5 start{" "}
             </span>
-            <span className='text-sm text-gray-600'>(quility cakes)</span>
+            <Link to='/viewmore' className='text-sm text-gray-600'>
+              (View more)
+            </Link>
           </div>
           <div className='inline-flex w-full justify-start py-3'>
-            <button
-              className=' bg-gray-800  hover:bg-black text-yellow-300 hover:text-yellow-300 rounded-xl shadow hover:shadow-lg py-4 px-4 border border-yellow-300 hover:border-transparent'
-              onClick={() => addItem(item)}>
-              Add to cart
-            </button>
+            <a
+              href='https://m.me/cakeman365'
+              target='_blank'
+              rel='noopener noreferrer'>
+              <button
+                className=' 
+              bg-gray-800  hover:bg-black text-yellow-300 hover:text-yellow-300 rounded-xl shadow hover:shadow-lg py-4 px-4 border border-yellow-300 hover:border-transparent'>
+                Messenger
+              </button>
+            </a>
           </div>
         </div>
       </div>
